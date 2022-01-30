@@ -2,8 +2,12 @@
 which can be found here:
 https://github.com/troldal/OpenXLSX.git
 
-It was just reduced and restructured for creating conan package.
-Maybe in near future convert to a standard fork and resturctured with modified Cmake files only.
+It is "reduced" and restructured version of OpenXLSX library. With this changes it is lot easier to create and use conan package manager.
+Maybe in near future this repo will get converted to a standard fork of origin lib and will get restructured with Cmake files only.
+
+To create conan package:
+- Download file: \conan\conanfile.py
+- Run command: conan create . demo/testing from directory containing this file
 
 # OpenXLSX
 
