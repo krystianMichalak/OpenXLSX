@@ -68,3 +68,9 @@ set(OPENXLSX_SOURCES
         EXPORT_FILE_NAME OpenXLSX-Exports.hpp
         EXPORT_MACRO_NAME OPENXLSX_EXPORT
         NO_EXPORT_MACRO_NAME OPENXLSX_HIDDEN)
+
+        add_custom_command(
+        TARGET OpenXLSX POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_CURRENT_BINARY_DIR}/OpenXLSX-Exports.hpp
+                ${CMAKE_SOURCE_DIR}/headers/OpenXLSX-Exports.hpp)
