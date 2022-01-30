@@ -2,7 +2,7 @@
 which can be found here:
 https://github.com/troldal/OpenXLSX.git
 
-It is "reduced" and restructured version of OpenXLSX library. With this changes it is lot easier to create and use conan package manager.
+It is "reduced" and restructured version of OpenXLSX library. With this changes it is a lot easier to create and use conan package manager.
 Maybe in near future this repo will get converted to a standard fork of origin lib and will get restructured with Cmake files only.
 
 To create conan package:
