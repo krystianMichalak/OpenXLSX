@@ -42,34 +42,37 @@ set(OPENXLSX_SOURCES
         ${CMAKE_CURRENT_LIST_DIR}/sources/XLXmlData.cpp
         ${CMAKE_CURRENT_LIST_DIR}/sources/XLXmlFile.cpp
         ${CMAKE_CURRENT_LIST_DIR}/sources/XLZipArchive.cpp
-        )        
-        add_library(OpenXLSX STATIC "")
-        add_library(OpenXLSX::OpenXLSX ALIAS OpenXLSX)
-        target_sources(OpenXLSX PRIVATE ${OPENXLSX_SOURCES})
-        target_include_directories(OpenXLSX
-                PUBLIC
-                $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
-                $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/OpenXLSX>
-                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)     # For export header
-        target_link_libraries(OpenXLSX
-                PRIVATE
-                $<BUILD_INTERFACE:Zippy>
-                $<BUILD_INTERFACE:PugiXML>
-                $<BUILD_INTERFACE:NoWide>)
+        )     
+
+add_library(OpenXLSX STATIC "")
+add_library(OpenXLSX::OpenXLSX ALIAS OpenXLSX)
+target_sources(OpenXLSX PRIVATE ${OPENXLSX_SOURCES})
+target_include_directories(OpenXLSX
+        PUBLIC
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/OpenXLSX>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
+
+target_link_libraries(OpenXLSX
+        PRIVATE
+        $<BUILD_INTERFACE:Zippy>
+        $<BUILD_INTERFACE:PugiXML>
+        $<BUILD_INTERFACE:NoWide>)
     
-        target_compile_definitions(OpenXLSX PUBLIC OPENXLSX_STATIC_DEFINE)
+target_compile_definitions(OpenXLSX PUBLIC OPENXLSX_STATIC_DEFINE)
 
-        set_property(TARGET OpenXLSX PROPERTY
-                MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set_property(TARGET OpenXLSX PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
-        include(GenerateExportHeader)
-        generate_export_header(OpenXLSX
+include(GenerateExportHeader)
+
+generate_export_header(OpenXLSX
         BASE_NAME openxlsx
         EXPORT_FILE_NAME OpenXLSX-Exports.hpp
         EXPORT_MACRO_NAME OPENXLSX_EXPORT
         NO_EXPORT_MACRO_NAME OPENXLSX_HIDDEN)
 
-        add_custom_command(
+add_custom_command(
         TARGET OpenXLSX POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
                 ${CMAKE_CURRENT_BINARY_DIR}/OpenXLSX-Exports.hpp
