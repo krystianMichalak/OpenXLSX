@@ -1,4 +1,4 @@
-# This repository was created from OpenXLSX
+# This repository is based on OpenXLSX library 
 which can be found here:
 https://github.com/troldal/OpenXLSX.git
 
