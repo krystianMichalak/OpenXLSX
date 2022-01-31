@@ -1,4 +1,4 @@
-# This repository waq created from OpenXLSX
+# This repository was created from OpenXLSX
 which can be found here:
 https://github.com/troldal/OpenXLSX.git
 
