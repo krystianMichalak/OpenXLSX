@@ -3,13 +3,12 @@ import os
 
 
 class OpenXLSXConan(ConanFile):
-    name = "OpenXLSX"
+    name = "openxlsx"
     version = "0.3.2"
     settings = "os", "compiler", "build_type", "arch"
 
     def source(self):
         self.run("git clone https://github.com/krystianMichalak/OpenXLSX.git")
-        #self.run("git clone https://github.com/troldal/OpenXLSX.git")
 
     def build(self):
         cmake = CMake(self)

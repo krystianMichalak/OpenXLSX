@@ -49,7 +49,7 @@ set(OPENXLSX_SOURCES
         target_include_directories(OpenXLSX
                 PUBLIC
                 $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
-                $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/headers>
+                $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/OpenXLSX>
                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)     # For export header
         target_link_libraries(OpenXLSX
                 PRIVATE
@@ -73,4 +73,4 @@ set(OPENXLSX_SOURCES
         TARGET OpenXLSX POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
                 ${CMAKE_CURRENT_BINARY_DIR}/OpenXLSX-Exports.hpp
-                ${CMAKE_SOURCE_DIR}/headers/OpenXLSX-Exports.hpp)
+                ${CMAKE_SOURCE_DIR}/OpenXLSX/OpenXLSX-Exports.hpp)
