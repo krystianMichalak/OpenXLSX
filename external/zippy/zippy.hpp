@@ -22,6 +22,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <filesystem>
 
 #ifdef _WIN32
 #    include <direct.h>
@@ -10734,7 +10735,8 @@ namespace Zippy
             }
 
             // ===== Generate a random file name with the same path as the current file
-            std::string tempPath = filename.substr(0, filename.rfind('/') + 1) + Impl::GenerateRandomName(20);
+            std::string tempdir = std::filesystem::temp_directory_path().string();
+            std::string tempPath = tempdir  + "\\" + filename.substr(0, filename.rfind('/') + 1) + Impl::GenerateRandomName(20);
 
             // ===== Prepare an temporary archive file with the random filename;
             mz_zip_archive tempArchive = mz_zip_archive();
