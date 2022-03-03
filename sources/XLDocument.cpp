@@ -532,9 +532,9 @@ void XLDocument::close()
 /**
  * @details Save the document with the same name. The existing file will be overwritten.
  */
-void XLDocument::save()
+void XLDocument::save(std::string tempFolderPath)
 {
-    saveAs(m_filePath);
+    saveAs(tempFolderPath, m_filePath);
 }
 
 /**
@@ -542,13 +542,13 @@ void XLDocument::save()
  * is that changes to the document may invalidate the calcChain.xml file. Deleting will force Excel to re-create the
  * file. This will happen automatically, without the user noticing.
  */
-void XLDocument::saveAs(const std::string& fileName)
+void XLDocument::saveAs(std::string tempFolderPath, const std::string& fileName)
 {
     m_filePath = fileName;
 
     // ===== Add all xml items to archive and save the archive.
     for (auto& item : m_data) m_archive.addEntry(item.getXmlPath(), item.getRawData());
-    m_archive.save(m_filePath);
+    m_archive.save(tempFolderPath, m_filePath);
 }
 
 /**

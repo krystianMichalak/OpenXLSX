@@ -179,14 +179,14 @@ namespace OpenXLSX
          * @brief Save the current document using the current filename, overwriting the existing file.
          * @return true if successful; otherwise false.
          */
-        void save();
+        void save(std::string tempFolderPath);
 
         /**
          * @brief Save the document with a new name. If a file exists with that name, it will be overwritten.
          * @param fileName The path of the file
          * @return true if successful; otherwise false.
          */
-        void saveAs(const std::string& fileName);
+        void saveAs(std::string tempFolderPath, const std::string& fileName);
 
         /**
          * @brief Get the filename of the current document, e.g. "spreadsheet.xlsx".

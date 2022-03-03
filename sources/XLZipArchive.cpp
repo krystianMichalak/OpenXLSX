@@ -98,9 +98,9 @@ void OpenXLSX::XLZipArchive::close()
 /**
  * @details
  */
-void OpenXLSX::XLZipArchive::save(const std::string& path)
+void OpenXLSX::XLZipArchive::save(std::string tempFolderPath, const std::string& path)
 {
-    m_archive->Save(path);
+    m_archive->Save(tempFolderPath, path);
 }
 
 /**

@@ -129,7 +129,7 @@ namespace OpenXLSX
          * @brief
          * @param path
          */
-        void save(const std::string& path = "");
+        void save(std::string tempFolderPath, const std::string& path = "");
 
         /**
          * @brief
