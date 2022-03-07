@@ -532,6 +532,11 @@ void XLDocument::close()
 /**
  * @details Save the document with the same name. The existing file will be overwritten.
  */
+void XLDocument::save()
+{
+    saveAs("", m_filePath);
+}
+
 void XLDocument::save(std::string tempFolderPath)
 {
     saveAs(tempFolderPath, m_filePath);
